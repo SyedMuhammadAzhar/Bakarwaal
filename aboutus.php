@@ -18,6 +18,8 @@
 </head>
 <body>
 
+	
+
 	<!--  Header  -->
   	<header>
 
@@ -27,7 +29,7 @@
 
 	    <nav class="active">  
 	        <ul >
-	          <li ><a href="index.html" >Home</a></li>
+	          <li ><a href="index.php" >Home</a></li>
 	          <li ><a href="#" class="active">About Us</a></li>
 	          <li><a href="#services">Services</a></li>
 	          <li><a href="#portfolio">Portfolio</a></li>
@@ -49,7 +51,7 @@
 	              <li><a href="#">Drop Down 5</a></li>
 	            </ul>
 	          </li> -->
-	          <li><a href="contact.html">Contact Us</a></li>
+	          <li><a href="contact.php">Contact Us</a></li>
 	        </ul>
       	</nav>
 	    <div class="menu-toggle">
@@ -163,9 +165,9 @@
 				<div class="footer-newsletter ">
 					<h4>Our Newsletter</h4>
 						<p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
-						<form action="" method="post">
+						<form action="./controllers/AddUserController.php" method="post">
 						  <input type="email" name="email">
-						  <input type="submit" value="Subscribe">
+						  <input type="submit" name="submit" value="Subscribe">
 						</form>
 					 
 				</div>

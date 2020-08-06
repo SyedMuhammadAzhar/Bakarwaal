@@ -18,6 +18,8 @@
 </head>
 <body>
 
+	
+
 	<!--  Header  -->
   	<header>
 
@@ -27,8 +29,8 @@
 
 	    <nav class="active">  
 	        <ul >
-	          <li ><a href="index.html">Home</a></li>
-	          <li ><a href="aboutus.html">About Us</a></li>
+	          <li ><a href="index.php">Home</a></li>
+	          <li ><a href="aboutus.php">About Us</a></li>
 	          <li><a href="#services">Services</a></li>
 	          <li><a href="#portfolio">Portfolio</a></li>
 	          <li><a href="#team">Team</a></li>
