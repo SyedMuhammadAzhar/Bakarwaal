@@ -18,6 +18,7 @@ class User{
 		        ));
 	}
 
-}
 
+}
+// include '../index.php';
 ?>

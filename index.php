@@ -17,7 +17,85 @@
 	</style>
 </head>
 <body>
+<?php 
+	require './util/Database.php';
+	class User{
+		public static function namevalue($id) {
 
+			$pdo = Database::makeConnection();
+			$stmt = $pdo->prepare('SELECT name FROM products WHERE id= :id');
+			$stmt->execute(array(
+			':id' => $id
+			));
+			$name = $stmt->fetchColumn();
+			return $name;
+		}
+		public static function companyvalue($id) {
+
+			$pdo = Database::makeConnection();
+			$stmt = $pdo->prepare('SELECT company FROM products WHERE id= :id');
+			$stmt->execute(array(
+			':id' => $id
+			));
+			$name = $stmt->fetchColumn();
+			return $name;
+		}
+		public static function pricevalue($id) {
+
+			$pdo = Database::makeConnection();
+			$stmt = $pdo->prepare('SELECT price FROM products WHERE id= :id');
+			$stmt->execute(array(
+			':id' => $id
+			));
+			$name = $stmt->fetchColumn();
+			return $name;
+		}
+	}
+					     				              		
+	
+
+
+session_start();
+include('./util/db.php');
+$status="";
+if (isset($_POST['code']) && $_POST['code']!=""){
+$code = $_POST['code'];
+$result = mysqli_query($con,"SELECT * FROM `products` WHERE `code`='$code'");
+$row = mysqli_fetch_assoc($result);
+$name = $row['name'];
+$code = $row['code'];
+$price = $row['price'];
+$image = $row['image'];
+$company = $row['company'];
+
+$cartArray = array(
+	$code=>array(
+	'name'=>$name,
+	'code'=>$code,
+	'price'=>$price,
+	'quantity'=>1,
+	'image'=>$image,
+	'company'=>$company)
+);
+
+if(empty($_SESSION["shopping_cart"])) {
+	$_SESSION["shopping_cart"] = $cartArray;
+	$status = "<div class='box'>Product is added to your cart!</div>";
+}else{
+	$array_keys = array_keys($_SESSION["shopping_cart"]);
+	if(in_array($code,$array_keys)) {
+		$status = "<div class='box' style='color:red;'>
+		Product is already added to your cart!</div>";	
+	} else {
+	$_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"],$cartArray);
+	$status = "<div class='box'>Product is added to your cart!</div>";
+	}
+
+	}
+}
+if(!empty($_SESSION["shopping_cart"])) {
+$cart_count = count(array_keys($_SESSION["shopping_cart"]));}
+?>
 	<!--  Header  -->
   	<header>
 
@@ -29,9 +107,9 @@
 	        <ul >
 	          <li ><a href="#" class="active" >Home</a></li>
 	          <li ><a href="aboutus.php">About Us</a></li>
-	          <li><a href="#services">Services</a></li>
+	          <li><a href="#services">Products</a></li>
 	          <li><a href="#portfolio">Portfolio</a></li>
-	          <li><a href="#team">Team</a></li>
+	          <li><a href="cart.php">Cart <?php echo $cart_count; ?></a></li>
 	          <!-- <li class="drop-down"><a href="">Drop Down</a>
 	            <ul>
 	              <li><a href="#">Drop Down 1</a></li>
@@ -70,9 +148,9 @@
 			</div>
 		</div>
 	</section>
-
+	
 	<div class="div-card">
-
+		
   					<div class="container page-wrapper" >
 					  <div class="page-inner">
 					    <div class="row">
@@ -81,8 +159,8 @@
 					          <img class="img" src="t-shirt.png" alt="">
 					          <div class="img-info">
 					            <div class="info-inner">
-					              <span class="p-name">I feel like Pablo</span>
-					              <span class="p-company">Yeezy</span>
+					              <span class="p-name"><?php echo $product = User::namevalue('1')?></span>
+					              <span class="p-company"><?php echo $product = User::companyvalue('1')?></span>
 					            </div>
 					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
 					          </div>
@@ -94,9 +172,12 @@
 					          </div>
 
 					          <a class="cart" href="#">
-					            <span class="price">$120</span>
+					            <span class="price">$<?php echo $product = User::pricevalue('1')?></span>
 					            <span class="add-to-cart">
-					              <span class="txt">Add in cart</span>
+					            	<form method='post' action=''>
+					            		<input type='hidden' name='code' value="Pr01" />
+					              		<span class="txt"><input class="txt txt2" type="submit" name="" value="Add in cart"></span>
+					               </form>
 					            </span>
 					          </a>
 					        </div>
@@ -113,8 +194,8 @@
 					          <img class="img" src="t-shirt.png" alt="">
 					          <div class="img-info">
 					            <div class="info-inner">
-					              <span class="p-name">I feel like Pablo</span>
-					              <span class="p-company">Yeezy</span>
+					              <span class="p-name"><?php echo $product = User::namevalue('2')?></span>
+					              <span class="p-company"><?php echo $product = User::companyvalue('2')?></span>
 					            </div>
 					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
 					          </div>
@@ -126,9 +207,12 @@
 					          </div>
 
 					          <a class="cart" href="#">
-					            <span class="price">$120</span>
+					            <span class="price">$<?php echo $product = User::pricevalue('2')?></span>
 					            <span class="add-to-cart">
-					              <span class="txt">Add in cart</span>
+					              <form method='post' action=''>
+					            		<input type='hidden' name='code' value="pr02" />
+					              		<span class="txt"><input class="txt txt2" type="submit" name="" value="Add in cart"></span>
+					               </form>
 					            </span>
 					          </a>
 					        </div>
@@ -146,8 +230,8 @@
 					          <img class="img" src="t-shirt.png" alt="">
 					          <div class="img-info">
 					            <div class="info-inner">
-					              <span class="p-name">I feel like Pablo</span>
-					              <span class="p-company">Yeezy</span>
+					              <span class="p-name"><?php echo $product = User::namevalue('3')?></span>
+					              <span class="p-company"><?php echo $product = User::companyvalue('3')?></span>
 					            </div>
 					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
 					          </div>
@@ -159,9 +243,12 @@
 					          </div>
 
 					          <a class="cart" href="#">
-					            <span class="price">$120</span>
+					            <span class="price">$<?php echo $product = User::pricevalue('3')?></span>
 					            <span class="add-to-cart">
-					              <span class="txt">Add in cart</span>
+					              <form method='post' action=''>
+					            		<input type='hidden' name='code' value="Pr03" />
+					              		<span class="txt"><input class="txt txt2" type="submit" name="" value="Add in cart"></span>
+					               </form>
 					            </span>
 					          </a>
 					        </div>
@@ -184,8 +271,8 @@
 					          <img class="img" src="t-shirt.png" alt="">
 					          <div class="img-info">
 					            <div class="info-inner">
-					              <span class="p-name">I feel like Pablo</span>
-					              <span class="p-company">Yeezy</span>
+					              <span class="p-name"><?php echo $product = User::namevalue('4')?></span>
+					              <span class="p-company"><?php echo $product = User::companyvalue('4')?></span>
 					            </div>
 					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
 					          </div>
@@ -197,9 +284,12 @@
 					          </div>
 
 					          <a class="cart" href="#">
-					            <span class="price">$120</span>
+					            <span class="price">$<?php echo $product = User::pricevalue('4')?></span>
 					            <span class="add-to-cart">
-					              <span class="txt">Add in cart</span>
+					              <form method='post' action=''>
+					            		<input type='hidden' name='code' value="Pr04" />
+					              		<span class="txt"><input class="txt txt2" type="submit" name="" value="Add in cart"></span>
+					               </form>
 					            </span>
 					          </a>
 					        </div>
@@ -216,8 +306,8 @@
 					          <img class="img" src="t-shirt.png" alt="">
 					          <div class="img-info">
 					            <div class="info-inner">
-					              <span class="p-name">I feel like Pablo</span>
-					              <span class="p-company">Yeezy</span>
+					              <span class="p-name"><?php echo $product = User::namevalue('5')?></span>
+					              <span class="p-company"><?php echo $product = User::companyvalue('5')?></span>
 					            </div>
 					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
 					          </div>
@@ -229,9 +319,12 @@
 					          </div>
 
 					          <a class="cart" href="#">
-					            <span class="price">$120</span>
+					            <span class="price">$<?php echo $product = User::pricevalue('5')?></span>
 					            <span class="add-to-cart">
-					              <span class="txt">Add in cart</span>
+					              <form method='post' action=''>
+					            		<input type='hidden' name='code' value="Pr05" />
+					              		<span class="txt"><input class="txt txt2" type="submit" name="" value="Add in cart"></span>
+					               </form>
 					            </span>
 					          </a>
 					        </div>
@@ -249,8 +342,8 @@
 					          <img class="img" src="t-shirt.png" alt="">
 					          <div class="img-info">
 					            <div class="info-inner">
-					              <span class="p-name">I feel like Pablo</span>
-					              <span class="p-company">Yeezy</span>
+					              <span class="p-name"><?php echo $product = User::namevalue('6')?></span>
+					              <span class="p-company"><?php echo $product = User::companyvalue('6')?></span>
 					            </div>
 					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
 					          </div>
@@ -262,9 +355,12 @@
 					          </div>
 
 					          <a class="cart" href="#">
-					            <span class="price">$120</span>
+					            <span class="price" >$<?php echo $product = User::pricevalue('6')?></span>
 					            <span class="add-to-cart">
-					              <span class="txt">Add in cart</span>
+					              <form method='post' action=''>
+					            		<input type='hidden' name='code' value="Pr06" />
+					              		<span class="txt"><input class="txt txt2" type="submit" name="" value="Add in cart"></span>
+					               </form>
 					            </span>
 					          </a>
 					        </div>
@@ -273,8 +369,10 @@
 					  </div>
 					</div>
 
-  				
-
+	</div>
+	<div style="clear:both;  text-align: center;"></div>
+		<div class="message_box" style="text-align: center;">
+		<?php echo $status; ?>
 	</div>
 
 	<div class="div-btn">

@@ -31,9 +31,9 @@
 	        <ul >
 	          <li ><a href="index.php" >Home</a></li>
 	          <li ><a href="#" class="active">About Us</a></li>
-	          <li><a href="#services">Services</a></li>
+	          <li><a href="#services">Products</a></li>
 	          <li><a href="#portfolio">Portfolio</a></li>
-	          <li><a href="#team">Team</a></li>
+	          <li><a href="cart.php">Cart</a></li>
 	          <!-- <li class="drop-down"><a href="">Drop Down</a>
 	            <ul>
 	              <li><a href="#">Drop Down 1</a></li>
