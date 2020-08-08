@@ -16,7 +16,7 @@ require '../models/User.php';
           else{
             $emailErr="";
             User::insertUser($_POST['email']);
-            header("location: ../index.php");
+            header("location: ../contact.php");
           }
         }
         
@@ -27,6 +27,6 @@ require '../models/User.php';
 	  return $data;
 	}
 
+include '../contact.php';
 
-include '../index.php';
 ?>

@@ -28,6 +28,4 @@ require '../models/User.php';
 	}
 
 include '../aboutus.php';
-include '../css/style.css';
-
 ?>

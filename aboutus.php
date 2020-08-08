@@ -165,7 +165,7 @@
 				<div class="footer-newsletter ">
 					<h4>Our Newsletter</h4>
 						<p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
-						<form action="./controllers/AddUserController.php" method="post">
+						<form action="./controllers/AboutUsController.php" method="post">
 						  <input type="email" name="email">
 						  <input type="submit" name="submit" value="Subscribe">
 						</form>

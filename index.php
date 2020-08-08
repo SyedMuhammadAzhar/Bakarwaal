@@ -385,7 +385,7 @@
 
 
     <section class="widget widget_blog_subscription">
-	  <form action="#" method="post" accept-charset="utf-8" id="subscribe-blog">
+	  <form action="./controllers/IndexController.php" method="post" accept-charset="utf-8" id="subscribe-blog">
 	    <p>Subscribe to our newsletter.</p>
 	    <p>
 	      <input type="text" name="email" style="width: 95%; padding: 1px 2px" placeholder="Enter your email address" value="" id="subscribe-field">
@@ -449,7 +449,7 @@
 				<div class="footer-newsletter ">
 					<h4>Our Newsletter</h4>
 						<p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
-						<form action="" method="post">
+						<form action="./controllers/IndexController.php" method="post">
 						  <input type="email" name="email">
 						  <input type="submit" value="Subscribe">
 						</form>
