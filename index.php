@@ -13,7 +13,13 @@
   <link rel="stylesheet" href="./css/footer.css">
 
 <style type="text/css">
-
+	.message_box {
+  margin: 10px 0px;
+    border: 1px solid #2b772e;
+    text-align: center;
+    font-weight: bold;
+    color: #2b772e;
+  }
 	</style>
 </head>
 <body>
@@ -93,7 +99,9 @@ if(empty($_SESSION["shopping_cart"])) {
 
 	}
 }
+$cart_count=0;
 if(!empty($_SESSION["shopping_cart"])) {
+
 $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 ?>
 	<!--  Header  -->
@@ -413,7 +421,6 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 	    <div class="overlay"></div>
 	  </div>
 	</div>
-
 
 
 

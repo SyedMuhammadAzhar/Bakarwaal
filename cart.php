@@ -12,66 +12,55 @@
   <link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
   <link rel="stylesheet" href="./css/footer.css">
 
+
+
 <style type="text/css">
-
-
-.product_wrapper {
-  float:right;
-  padding: 10px;
-  text-align: center;
-  }
-.product_wrapper:hover {
-  box-shadow: 0 0 0 2px #e5e5e5;
-  cursor:pointer;
-  }
-.product_wrapper .name {
-  font-weight:bold;
-  }
-.product_wrapper .buy {
-  text-transform: uppercase;
-    background: #F68B1E;
-    border: 1px solid #F68B1E;
-    cursor: pointer;
-    color: #fff;
-    padding: 8px 40px;
-    margin-top: 10px;
-}
-.product_wrapper .buy:hover {
-  background: #f17e0a;
-    border-color: #f17e0a;
+.cart-main{
+	width:900px; 
+	margin: 0 auto;
+	padding-top: 40px;
+	padding-bottom: 40px;
 }
 .message_box .box{
-  margin: 10px 0px;
+  	margin: 10px 0px;
     border: 1px solid #2b772e;
     text-align: center;
     font-weight: bold;
     color: #2b772e;
   }
+.table th {
+  border-bottom: #F0F0F0 1px solid;
+  padding: 18px;
+  vertical-align: middle;
+  }
 .table td {
   border-bottom: #F0F0F0 1px solid;
-  padding: 10px;
+  padding: 18px;
+  vertical-align: middle;
   }
 .cart_div {
   float:right;
   font-weight:bold;
   position:relative;
-  }
+  margin-right: 30px;
+  margin-bottom: 20PX;
+}
 .cart_div a {
   color:#000;
   } 
 .cart_div span {
-  font-size: 12px;
+  	font-size: 20px;
     line-height: 14px;
     background: #F68B1E;
-    padding: 2px;
-    border: 2px solid #fff;
+    padding: 1px;
+    border: 1px solid #fff;
     border-radius: 50%;
     position: absolute;
     top: -1px;
     left: 13px;
     color: #fff;
-    width: 14px;
-    height: 13px;
+    width: 20px;
+    height: 20px;
     text-align: center;
   }
 .cart .remove {
@@ -85,7 +74,111 @@
 .cart .remove:hover {
   text-decoration:underline;
   }
-	</style>
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+
+@media only screen and (max-width: 920px) {
+.cart-main{
+	width:600px; 
+}
+.table td {
+  padding: 8px;
+  }
+.table th {
+  padding: 8px;
+}
+
+
+}
+
+
+@media only screen and (max-width: 620px) {
+.cart-main{
+	width:300px; 
+}
+.cart_div {
+  display: none;
+ }
+
+.carthead{
+	text-align: center;
+}
+
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+}
+
+</style>
+
 </head>
 <body>
 
@@ -116,12 +209,13 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
 }
   	
 }
-
+$cart_count=0;
 if(!empty($_SESSION["shopping_cart"])) {
-$cart_count = count(array_keys($_SESSION["shopping_cart"]));
-?>
-	<!--  Header  -->
-  	<header>
+	$cart_count = count(array_keys($_SESSION["shopping_cart"]));
+}
+
+	// <!--  Header  -->
+  	echo '<header>
 
       <div class="logo"> Bakarwaal
         <!-- <a href="index.html"><img src="logo.png" alt="" style="max-width:100%;height:auto;"></a> -->
@@ -133,7 +227,7 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));
 	          <li ><a href="aboutus.php">About Us</a></li>
 	          <li><a href="#services">Products</a></li>
 	          <li><a href="#portfolio">Portfolio</a></li>
-	          <li><a href="#" class="active">Cart <?php echo $cart_count; ?></a></li>
+	          <li><a href="#" class="active">Cart '. $cart_count.'</a></li>
 	          
 	          <li><a href="contact.php" >Contact Us</a></li>
 	        </ul>
@@ -144,18 +238,18 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));
     
   	</header>
 
-  	<section class="cd-intro" style="height: 60vh;">
-		<div class="cd-intro-content mask" style="background-image: url('./css/intro-bg-2.png'); background-size: cover;">
+  	<section class="cd-intro" style="height: 60vh;">';
+		echo '<div class="cd-intro-content mask" style="background-image: url('.'./css/intro-bg-2.png'.'); background-size: cover;">
 			<h1 data-content="BAKARWAAL" style="margin-top: 60px;"><span>BAKARWAAL</span></h1>
 			<h3 data-content="Woolen Clothing"><span>Woolen Clothing</span></h3>
 		</div>
-	</section>
+	</section>';?>
 
 
 
-<div style="width:700px; margin: 0 auto;">
+<div class="cart-main">
 
-<h2>Demo Shopping Cart</h2>   
+<h2 class="carthead">My Shopping Cart</h2>   
 
 
 <div class="cart_div">
@@ -163,9 +257,7 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));
 <img src="cart-icon.png" /> Cart
 <span><?php echo $cart_count; ?></span></a>
 </div>
-<?php
-}
-?>
+
 
 <div class="cart" style="position: relative;">
 <?php
@@ -173,27 +265,30 @@ if(isset($_SESSION["shopping_cart"])){
     $total_price = 0;
 ?>	
 <table class="table">
+	<thead>
+		<tr class="headtr">
+			<th>IMAGE</th>
+			<th>NAME</th>
+			<th>QUANTITY</th>
+			<th>ITEM PRICE</th>
+			<th>ITEM TOTAL</th>
+		</tr>	
+	</thead>
 <tbody>
-<tr>
-<td></td>
-<td>ITEM NAME</td>
-<td>QUANTITY</td>
-<td>UNIT PRICE</td>
-<td>ITEMS TOTAL</td>
-</tr>	
 <?php		
 foreach ($_SESSION["shopping_cart"] as $product){
 ?>
+
 <tr>
-<td><img src='<?php echo $product["image"]; ?>' width="50" height="40" /></td>
-<td><?php echo $product["name"]; ?><br />
+<td data-label="IMAGE"><img  src='<?php echo $product["image"]; ?>' width="50" height="50"  ></td>
+<td data-label="NAME"><?php echo $product["name"]; ?><br/>
 <form method='post' action=''>
 <input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
 <input type='hidden' name='action' value="remove" />
 <button type='submit' class='remove'>Remove Item</button>
 </form>
 </td>
-<td>
+<td data-label="QUANTITY">
 <form method='post' action=''>
 <input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
 <input type='hidden' name='action' value="change" />
@@ -206,15 +301,15 @@ foreach ($_SESSION["shopping_cart"] as $product){
 </select>
 </form>
 </td>
-<td><?php echo "$".$product["price"]; ?></td>
-<td><?php echo "$".$product["price"]*$product["quantity"]; ?></td>
+<td data-label="PRICE"><?php echo "$".$product["price"]; ?></td>
+<td data-label="ITEM TOTAL"><?php echo "$".$product["price"]*$product["quantity"]; ?></td>
 </tr>
 <?php
 $total_price += ($product["price"]*$product["quantity"]);
 }
 ?>
 <tr>
-<td colspan="5" align="right">
+<td colspan="5" align="right" style="text-align: right;">
 <strong>TOTAL: <?php echo "$".$total_price; ?></strong>
 </td>
 </tr>
@@ -222,7 +317,7 @@ $total_price += ($product["price"]*$product["quantity"]);
 </table>		
   <?php
 }else{
-	echo "<h3>Your cart is empty!</h3>";
+	// echo "<h3>Your cart is empty!</h3>";
 	}
 ?>
 </div>
@@ -325,144 +420,14 @@ $total_price += ($product["price"]*$product["quantity"]);
 
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script type="text/javascript">
-				/* Set values + misc */
-// var promoCode;
-// var promoPrice;
-// var fadeTime = 300;
-
-/* Assign actions */
-// $('.quantity input').change(function() {
-//   updateQuantity(this);
-// });
-
-// $('.remove button').click(function() {
-//   removeItem(this);
-// });
 
 		$(document).ready(function(){
 			$('.menu-toggle').click(function(){
 				$('nav').toggleClass('active');
 			});
 			
-			// updateSumItems();
-
-			// $('.promo-code-cta').click(function() {
-
-			// 	  promoCode = $('#promo-code').val();
-
-			// 	  if (promoCode == '10off' || promoCode == '10OFF') {
-			// 	    //If promoPrice has no value, set it as 10 for the 10OFF promocode
-			// 	    if (!promoPrice) {
-			// 	      promoPrice = 10;
-			// 	    } else if (promoCode) {
-			// 	      promoPrice = promoPrice * 1;
-			// 	    }
-			// 	  } else if (promoCode != '') {
-			// 	    alert("Invalid Promo Code");
-			// 	    promoPrice = 0;
-			// 	  }
-			// 	  //If there is a promoPrice that has been set (it means there is a valid promoCode input) show promo
-			// 	  if (promoPrice) {
-			// 	    $('.summary-promo').removeClass('hide');
-			// 	    $('.promo-value').text(promoPrice.toFixed(2));
-			// 	    recalculateCart(true);
-			// 	  }
-			// 	});
 		})
 
-		// function addClass() {
-  // 			document.body.classList.add("sent");
-		// }
-
-		// sendLetter.addEventListener("click", addClass);
-
-
-
-
-		// /* Recalculate cart */
-		// function recalculateCart(onlyTotal) {
-		//   var subtotal = 0;
-
-		//   /* Sum up row totals */
-		//   $('.basket-product').each(function() {
-		//     subtotal += parseFloat($(this).children('.subtotal').text());
-		//   });
-
-		//   /* Calculate totals */
-		//   var total = subtotal;
-
-		//   //If there is a valid promoCode, and subtotal < 10 subtract from total
-		//   var promoPrice = parseFloat($('.promo-value').text());
-		//   if (promoPrice) {
-		//     if (subtotal >= 10) {
-		//       total -= promoPrice;
-		//     } else {
-		//       alert('Order must be more than £10 for Promo code to apply.');
-		//       $('.summary-promo').addClass('hide');
-		//     }
-		//   }
-
-		//   /*If switch for update only total, update only total display*/
-		//   if (onlyTotal) {
-		//     /* Update total display */
-		//     $('.total-value').fadeOut(fadeTime, function() {
-		//       $('#basket-total').html(total.toFixed(2));
-		//       $('.total-value').fadeIn(fadeTime);
-		//     });
-		//   } else {
-		//     /* Update summary display. */
-		//     $('.final-value').fadeOut(fadeTime, function() {
-		//       $('#basket-subtotal').html(subtotal.toFixed(2));
-		//       $('#basket-total').html(total.toFixed(2));
-		//       if (total == 0) {
-		//         $('.checkout-cta').fadeOut(fadeTime);
-		//       } else {
-		//         $('.checkout-cta').fadeIn(fadeTime);
-		//       }
-		//       $('.final-value').fadeIn(fadeTime);
-		//     });
-		//   }
-		// }
-
-		// /* Update quantity */
-		// function updateQuantity(quantityInput) {
-		//   /* Calculate line price */
-		//   var productRow = $(quantityInput).parent().parent();
-		//   var price = parseFloat(productRow.children('.price').text());
-		//   var quantity = $(quantityInput).val();
-		//   var linePrice = price * quantity;
-
-		//   /* Update line price display and recalc cart totals */
-		//   productRow.children('.subtotal').each(function() {
-		//     $(this).fadeOut(fadeTime, function() {
-		//       $(this).text(linePrice.toFixed(2));
-		//       recalculateCart();
-		//       $(this).fadeIn(fadeTime);
-		//     });
-		//   });
-
-		//   productRow.find('.item-quantity').text(quantity);
-		//   updateSumItems();
-		// }
-
-		// function updateSumItems() {
-		//   var sumItems = 0;
-		//   $('.quantity input').each(function() {
-		//     sumItems += parseInt($(this).val());
-		//   });
-		//   $('.total-items').text(sumItems);
-		// }
-
-		// /* Remove item from cart */
-		// function removeItem(removeButton) {
-		//   /* Remove row from DOM and recalc cart total */
-		//   var productRow = $(removeButton).parent().parent();
-		//   productRow.slideUp(fadeTime, function() {
-		//     productRow.remove();
-		//     recalculateCart();
-		//     updateSumItems();
-		//   });
-		// }
 	</script>
   
 </body>
