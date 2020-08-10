@@ -13,13 +13,76 @@
   <link rel="stylesheet" href="./css/footer.css">
 
 <style type="text/css">
+.team-section{
+  text-align: center;
+  overflow: hidden;
+  background:#0774BE; 
+  margin-top: 20px;
+}
+.inner-width{
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px;
+  color: #333;
+  overflow: hidden;
+}
+.team-section h1{
+  font-size: 20px;
+  text-transform: uppercase;
+  display: inline-block;
+  border-bottom: 4px solid;
+  padding-bottom: 10px;
+}
+.pe{
+  float: left;
+  width: calc(100% / 3);
+  overflow: hidden;
+  padding: 40px 0;
+  transition: 0.4s;
+}
+.pe:hover{
+  background: #008FFF;
+}
+.pe img{
+  width: 120px;
+  height: 120px;
+}
+.p-name{
+  margin: 16px 0;
+  text-transform: uppercase;
+}
+.p-des{
+  font-style: italic;
+  color: white;
+}
+.p-sm{
+  margin-top: 12px;
+}
+.p-sm a{
+  margin: 0 4px;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  transition: 0.4s;
+}
+.p-sm a:hover{
+  transform: scale(1.3);
+}
+.p-sm a i{
+  color: #333;
+  line-height: 30px;
+}
+@media screen and (max-width:600px) {
+  .pe{
+    width: 100%;
+  }
+}
 
-	</style>
+</style>
 </head>
 <body>
 
 	
-
 	<!--  Header  -->
   	<header>
 
@@ -66,33 +129,53 @@
         </div>
     </div>
 
-    <div class="team-section">
-    	<h1>Our Team</h1>
-    	<span class="border"></span>
-        <div class="ps">
-        	<a href="#p1"><img src="img1.png"></a>
-        	<a href="#p2"><img src="img1.png"></a>
-        	<a href="#p3"><img src="img1.png"></a>
-        </div>
-        <div class="section" id="p1">
-        	<span class="name">Afaq Mansoor Khan</span>
-        	<span class="border"></span>
-        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-        <div class="section" id="p2">
-        	<span class="name">Syed Muhammad Azhar</span>
-        	<span class="border"></span>
-        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
+   
 
-        <div class="section" id="p3">
-        	<span class="name">John Doe</span>
-        	<span class="border"></span>
-        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
+        <div class="team-section">
+		    <div class="inner-width">
+		      <h1>Meet Our Team</h1>
+		      <div class="pers">
+
+		        <div class="pe">
+		          <img src="img/p1.png" alt="">
+		          <div class="p-name">Afaq Mansoor Khan</div>
+		          <div class="p-des">Web Developer</div>
+		          <div class="p-sm">
+		            <a href="#"><i class="fa fa-facebook-f"></i></a>
+		            <a href="#"><i class="fa fa-twitter"></i></a>
+		            <a href="#"><i class="fa fa-instagram"></i></a>
+		          </div>
+		        </div>
+
+		        <div class="pe">
+		          <img src="img/p2.png" alt="">
+		          <div class="p-name">Syed Muhammad Azhar</div>
+		          <div class="p-des">Web Developer</div>
+		          <div class="p-sm">
+		            <a href="#"><i class="fa fa-facebook-f"></i></a>
+		            <a href="#"><i class="fa fa-twitter"></i></a>
+		            <a href="#"><i class="fa fa-instagram"></i></a>
+		          </div>
+		        </div>
+
+		        <div class="pe">
+		          <img src="img/p3.png" alt="">
+		          <div class="p-name">John Doe</div>
+		          <div class="p-des">Web Designer</div>
+		          <div class="p-sm">
+		            <a href="#"><i class="fa fa-facebook-f"></i></a>
+		            <a href="#"><i class="fa fa-twitter"></i></a>
+		            <a href="#"><i class="fa fa-instagram"></i></a>
+		          </div>
+		        </div>
+
+		      </div>
+
+		    </div>
+		</div>
 
 
-    </div>
+    
 
 
 <!-- Footer  -->

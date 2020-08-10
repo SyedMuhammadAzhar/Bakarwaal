@@ -8,7 +8,7 @@
 	<!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"> -->
   <link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
   <link rel="stylesheet" href="./css/footer.css">
 
@@ -436,11 +436,11 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
               <img src="p1.png" alt="">
               <div class="name">Nouman Khan</div>
               <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
               </div>
 
               <p>
@@ -454,11 +454,11 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
               <img src="p1.png" alt="">
               <div class="name">Fahad Zaman</div>
               <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
               </div>
 
               <p>
@@ -472,11 +472,11 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
               <img src="p1.png" alt="">
               <div class="name">Obaid Khan</div>
               <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
               </div>
 
               <p>
