@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title></title>
+	<title>Bakarwaal</title>
 <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -12,13 +12,19 @@
   <link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
   <link rel="stylesheet" href="./css/footer.css">
 
-<style type="text/css">
+<style >
 
 	</style>
 </head>
 <body>
 
-	
+	<?php 
+
+		session_start();
+		$cart_count=0;
+		if(!empty($_SESSION["shopping_cart"])) {
+		$cart_count = count(array_keys($_SESSION["shopping_cart"]));}
+	?>
 
 	<!--  Header  -->
   	<header>
@@ -28,12 +34,12 @@
       </div>
 
 	    <nav class="active">  
-	        <ul >
+	        <ul>
 	          <li ><a href="index.php">Home</a></li>
 	          <li ><a href="aboutus.php">About Us</a></li>
-	          <li><a href="#services">Products</a></li>
+	          <li><a href="products.php">Products</a></li>
 	          <li><a href="#portfolio">Portfolio</a></li>
-	          <li><a href="cart.php">Cart</a></li>
+	          <li><a href="cart.php">Cart <a id="cart_count"> <?php echo $cart_count; ?></a></a></li>
 	          
 	          <li><a href="#" class="active">Contact Us</a></li>
 	        </ul>
@@ -142,12 +148,19 @@
 	<div class=" footer-bottom container">
 		<div class="copyright">
 			
-			© Copyright <strong>BakarWaal</strong> . All Rights Reserved
+			© Copyright <strong>Bakarwaal</strong> . All Rights Reserved
 
 		</div>
 		
 		<div class="credits">
 			Design By Azhar&Afaq
+			<p style="margin:0; margin-top: 10px;">
+				<a href="#">
+				    <img style="border:0;width:88px;height:31px;"
+				        src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+				        alt="Valid CSS!" />
+				    </a>
+				</p>
 		</div>
 
 	</div>
@@ -163,7 +176,7 @@
 
 
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script type="text/javascript">
+	<script >
 		$(document).ready(function(){
 			$('.menu-toggle').click(function(){
 				$('nav').toggleClass('active');

@@ -13,14 +13,7 @@
   <link rel="stylesheet" href="./css/footer.css">
 
 <style >
-	.message_box {
-  margin: 10px 0px;
-    border: 1px solid #2b772e;
-    text-align: center;
-    font-weight: bold;
-    color: #2b772e;
-  }
-  #cart_count{
+	#cart_count{
 		font-size: 18px;
 	    margin-left: -20px;
 	    background:#1B4DBE;
@@ -28,7 +21,7 @@
 	    border-radius: 50%;
 	    color: white;
 	}
-	</style>
+</style>
 </head>
 <body>
 <?php 
@@ -121,28 +114,11 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 
 	    <nav class="active">  
 	        <ul >
-	          <li ><a href="#" class="active" >Home</a></li>
+	          <li ><a href="index.php"  >Home</a></li>
 	          <li ><a href="aboutus.php">About Us</a></li>
-	          <li><a href="products.php">Products</a></li>
+	          <li><a href="products.php" class="active">Products</a></li>
 	          <li><a href="#portfolio">Portfolio</a></li>
 	          <li><a href="cart.php">Cart <a id="cart_count"> <?php echo $cart_count; ?></a></a></li>
-	          <!-- <li class="drop-down"><a href="">Drop Down</a>
-	            <ul>
-	              <li><a href="#">Drop Down 1</a></li>
-	              <li class="drop-down"><a href="#">Drop Down 2</a>
-	                <ul>
-	                  <li><a href="#">Deep Drop Down 1</a></li>
-	                  <li><a href="#">Deep Drop Down 2</a></li>
-	                  <li><a href="#">Deep Drop Down 3</a></li>
-	                  <li><a href="#">Deep Drop Down 4</a></li>
-	                  <li><a href="#">Deep Drop Down 5</a></li>
-	                </ul>
-	              </li>
-	              <li><a href="#">Drop Down 3</a></li>
-	              <li><a href="#">Drop Down 4</a></li>
-	              <li><a href="#">Drop Down 5</a></li>
-	            </ul>
-	          </li> -->
 	          <li><a href="contact.php">Contact Us</a></li>
 	        </ul>
       	</nav>
@@ -152,16 +128,10 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
     
   	</header>
 
-  	<section class="cd-intro">
-		<div class="cd-intro-content mask">
-			<h1 data-content="BAKARWAAL"><span>BAKARWAAL</span></h1>
+  	<section class="cd-intro" style="height: 60vh;">
+		<div class="cd-intro-content mask" style="background-image: url('./css/intro-bg-2.png'); background-size: cover;">
+			<h1 data-content="BAKARWAAL" style="margin-top: 60px;"><span>BAKARWAAL</span></h1>
 			<h3 data-content="Woolen Clothing"><span>Woolen Clothing</span></h3>
-			<div class="action-wrapper">
-				<p>
-					<a href="#0" class="cd-btn main-action">Shop Now</a>
-					<a href="#0" class="cd-btn">Learn More</a>
-				</p>
-			</div>
 		</div>
 	</section>
 	
@@ -172,10 +142,14 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					    <div class="row">
 					      <div class="el-wrapper">
 					        <div class="box-up">
-					          <img class="img" src="t-shirt.png" alt="">
+
+					          <a href="./product.php"><img class="img" src="t-shirt.png" alt=""></a>
+					          
 					          <div class="img-info">
 					            <div class="info-inner">
-					              <span class="p-name"><?php echo $product = User::namevalue('1')?></span>
+
+					              <a href="./product.php"> <span class="p-name"><?php echo $product = User::namevalue('1')?></span></a>
+
 					              <span class="p-company"><?php echo $product = User::companyvalue('1')?></span>
 					            </div>
 					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
@@ -274,11 +248,11 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					</div>
 
   				
-<!-- 
-	</div>
 
-	<div class="div-card">
- -->
+	<!-- </div>
+
+	<div class="div-card"> -->
+
   					<div class="container page-wrapper" >
 					  <div class="page-inner">
 					    <div class="row">
@@ -384,130 +358,348 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					    </div>
 					  </div>
 					</div>
+<!-- 
+	</div>
+
+
+	<div class="div-card"> -->
+
+  					<div class="container page-wrapper" >
+					  <div class="page-inner">
+					    <div class="row">
+					      <div class="el-wrapper">
+					        <div class="box-up">
+					          <img class="img" src="t-shirt.png" alt="">
+					          <div class="img-info">
+					            <div class="info-inner">
+					              <span class="p-name"><?php echo $product = User::namevalue('7')?></span>
+					              <span class="p-company"><?php echo $product = User::companyvalue('7')?></span>
+					            </div>
+					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
+					          </div>
+					        </div>
+
+					        <div class="box-down">
+					          <div class="h-bg">
+					            <div class="h-bg-inner"></div>
+					          </div>
+
+					          <a class="cart" href="#">
+					            <span class="price">$<?php echo $product = User::pricevalue('7')?></span>
+					            <span class="add-to-cart">
+					              <form method='post' action=''>
+					            		<input type='hidden' name='code' value="Pr07" />
+					              		<span class="txt"><input class="txt txt2" type="submit" name="" value="Add in cart"></span>
+					               </form>
+					            </span>
+					          </a>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				
+  					<div class="container page-wrapper" >
+					  <div class="page-inner">
+					    <div class="row">
+					      <div class="el-wrapper">
+					        <div class="box-up">
+					          <img class="img" src="t-shirt.png" alt="">
+					          <div class="img-info">
+					            <div class="info-inner">
+					              <span class="p-name"><?php echo $product = User::namevalue('8')?></span>
+					              <span class="p-company"><?php echo $product = User::companyvalue('8')?></span>
+					            </div>
+					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
+					          </div>
+					        </div>
+
+					        <div class="box-down">
+					          <div class="h-bg">
+					            <div class="h-bg-inner"></div>
+					          </div>
+
+					          <a class="cart" href="#">
+					            <span class="price">$<?php echo $product = User::pricevalue('8')?></span>
+					            <span class="add-to-cart">
+					              <form method='post' action=''>
+					            		<input type='hidden' name='code' value="Pr08" />
+					              		<span class="txt"><input class="txt txt2" type="submit" name="" value="Add in cart"></span>
+					               </form>
+					            </span>
+					          </a>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+
+  				
+  					<div class="container page-wrapper" >
+					  <div class="page-inner">
+					    <div class="row">
+					      <div class="el-wrapper">
+					        <div class="box-up">
+					          <img class="img" src="t-shirt.png" alt="">
+					          <div class="img-info">
+					            <div class="info-inner">
+					              <span class="p-name"><?php echo $product = User::namevalue('6')?></span>
+					              <span class="p-company"><?php echo $product = User::companyvalue('6')?></span>
+					            </div>
+					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
+					          </div>
+					        </div>
+
+					        <div class="box-down">
+					          <div class="h-bg">
+					            <div class="h-bg-inner"></div>
+					          </div>
+
+					          <a class="cart" href="#">
+					            <span class="price" >$<?php echo $product = User::pricevalue('6')?></span>
+					            <span class="add-to-cart">
+					              <form method='post' action=''>
+					            		<input type='hidden' name='code' value="Pr06" />
+					              		<span class="txt"><input class="txt txt2" type="submit" name="" value="Add in cart"></span>
+					               </form>
+					            </span>
+					          </a>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+
+
+
+					<div class="container page-wrapper" >
+					  <div class="page-inner">
+					    <div class="row">
+					      <div class="el-wrapper">
+					        <div class="box-up">
+					          <img class="img" src="t-shirt.png" alt="">
+					          <div class="img-info">
+					            <div class="info-inner">
+					              <span class="p-name"><?php echo $product = User::namevalue('7')?></span>
+					              <span class="p-company"><?php echo $product = User::companyvalue('7')?></span>
+					            </div>
+					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
+					          </div>
+					        </div>
+
+					        <div class="box-down">
+					          <div class="h-bg">
+					            <div class="h-bg-inner"></div>
+					          </div>
+
+					          <a class="cart" href="#">
+					            <span class="price">$<?php echo $product = User::pricevalue('7')?></span>
+					            <span class="add-to-cart">
+					              <form method='post' action=''>
+					            		<input type='hidden' name='code' value="Pr07" />
+					              		<span class="txt"><input class="txt txt2" type="submit" name="" value="Add in cart"></span>
+					               </form>
+					            </span>
+					          </a>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				
+  					<div class="container page-wrapper" >
+					  <div class="page-inner">
+					    <div class="row">
+					      <div class="el-wrapper">
+					        <div class="box-up">
+					          <img class="img" src="t-shirt.png" alt="">
+					          <div class="img-info">
+					            <div class="info-inner">
+					              <span class="p-name"><?php echo $product = User::namevalue('8')?></span>
+					              <span class="p-company"><?php echo $product = User::companyvalue('8')?></span>
+					            </div>
+					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
+					          </div>
+					        </div>
+
+					        <div class="box-down">
+					          <div class="h-bg">
+					            <div class="h-bg-inner"></div>
+					          </div>
+
+					          <a class="cart" href="#">
+					            <span class="price">$<?php echo $product = User::pricevalue('8')?></span>
+					            <span class="add-to-cart">
+					              <form method='post' action=''>
+					            		<input type='hidden' name='code' value="Pr08" />
+					              		<span class="txt"><input class="txt txt2" type="submit" name="" value="Add in cart"></span>
+					               </form>
+					            </span>
+					          </a>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+
+  				
+  					<div class="container page-wrapper" >
+					  <div class="page-inner">
+					    <div class="row">
+					      <div class="el-wrapper">
+					        <div class="box-up">
+					          <img class="img" src="t-shirt.png" alt="">
+					          <div class="img-info">
+					            <div class="info-inner">
+					              <span class="p-name"><?php echo $product = User::namevalue('6')?></span>
+					              <span class="p-company"><?php echo $product = User::companyvalue('6')?></span>
+					            </div>
+					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
+					          </div>
+					        </div>
+
+					        <div class="box-down">
+					          <div class="h-bg">
+					            <div class="h-bg-inner"></div>
+					          </div>
+
+					          <a class="cart" href="#">
+					            <span class="price" >$<?php echo $product = User::pricevalue('6')?></span>
+					            <span class="add-to-cart">
+					              <form method='post' action=''>
+					            		<input type='hidden' name='code' value="Pr06" />
+					              		<span class="txt"><input class="txt txt2" type="submit" name="" value="Add in cart"></span>
+					               </form>
+					            </span>
+					          </a>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+
+
+
+					<div class="container page-wrapper" >
+					  <div class="page-inner">
+					    <div class="row">
+					      <div class="el-wrapper">
+					        <div class="box-up">
+					          <img class="img" src="t-shirt.png" alt="">
+					          <div class="img-info">
+					            <div class="info-inner">
+					              <span class="p-name"><?php echo $product = User::namevalue('7')?></span>
+					              <span class="p-company"><?php echo $product = User::companyvalue('7')?></span>
+					            </div>
+					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
+					          </div>
+					        </div>
+
+					        <div class="box-down">
+					          <div class="h-bg">
+					            <div class="h-bg-inner"></div>
+					          </div>
+
+					          <a class="cart" href="#">
+					            <span class="price">$<?php echo $product = User::pricevalue('7')?></span>
+					            <span class="add-to-cart">
+					              <form method='post' action=''>
+					            		<input type='hidden' name='code' value="Pr07" />
+					              		<span class="txt"><input class="txt txt2" type="submit" name="" value="Add in cart"></span>
+					               </form>
+					            </span>
+					          </a>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				
+  					<div class="container page-wrapper" >
+					  <div class="page-inner">
+					    <div class="row">
+					      <div class="el-wrapper">
+					        <div class="box-up">
+					          <img class="img" src="t-shirt.png" alt="">
+					          <div class="img-info">
+					            <div class="info-inner">
+					              <span class="p-name"><?php echo $product = User::namevalue('8')?></span>
+					              <span class="p-company"><?php echo $product = User::companyvalue('8')?></span>
+					            </div>
+					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
+					          </div>
+					        </div>
+
+					        <div class="box-down">
+					          <div class="h-bg">
+					            <div class="h-bg-inner"></div>
+					          </div>
+
+					          <a class="cart" href="#">
+					            <span class="price">$<?php echo $product = User::pricevalue('8')?></span>
+					            <span class="add-to-cart">
+					              <form method='post' action=''>
+					            		<input type='hidden' name='code' value="Pr08" />
+					              		<span class="txt"><input class="txt txt2" type="submit" name="" value="Add in cart"></span>
+					               </form>
+					            </span>
+					          </a>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+
+  				
+  					<div class="container page-wrapper" >
+					  <div class="page-inner">
+					    <div class="row">
+					      <div class="el-wrapper">
+					        <div class="box-up">
+					          <img class="img" src="t-shirt.png" alt="">
+					          <div class="img-info">
+					            <div class="info-inner">
+					              <span class="p-name"><?php echo $product = User::namevalue('6')?></span>
+					              <span class="p-company"><?php echo $product = User::companyvalue('6')?></span>
+					            </div>
+					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
+					          </div>
+					        </div>
+
+					        <div class="box-down">
+					          <div class="h-bg">
+					            <div class="h-bg-inner"></div>
+					          </div>
+
+					          <a class="cart" href="#">
+					            <span class="price" >$<?php echo $product = User::pricevalue('6')?></span>
+					            <span class="add-to-cart">
+					              <form method='post' action=''>
+					            		<input type='hidden' name='code' value="Pr06" />
+					              		<span class="txt"><input class="txt txt2" type="submit" name="" value="Add in cart"></span>
+					               </form>
+					            </span>
+					          </a>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+					</div>
 
 	</div>
+
+
+
+
+
 	<div style="clear:both;  text-align: center;"></div>
 		<div class="message_box" style="text-align: center;">
 		<?php echo $status; ?>
 	</div>
 
-	<div class="div-btn">
-		<a href="#0" class="cd-btn2 main-action">Browse All Products 
-			<i class="fa fa-arrow-circle-right" aria-hidden="true" style="font-size: 20px"></i>
-		</a>
-	</div>
+	
 
-
-
-	<div class="banner"><img src="sm2.jpg" style="width: 80%; height: 40%;"></div>
-
-
-
-	<div class="container2">
-	  <div id="marketing" class="section2">
-	    <div class="content">
-	      <i class="fa fa-truck" aria-hidden="true" style=""></i>
-	      <h1>FREE SHIPPING</h1>
-	      <p>We offer free shipping all over Pakistan</p>
-	    </div>
-	    <div class="overlay"></div>
-	  </div>
-	  <div id="technology" class="section2">
-	    <div class="content">
-	      <i class="fa fa-money" aria-hidden="true" ></i>
-	      <h1>30 DAYS MONEY BACK</h1>
-	      <p>We have 30 days money back guarantee policy</p>
-	    </div>
-	    <div class="overlay"></div>
-	  </div>
-	  <div id="advertising" class="section2">
-	    <div class="content">
-	      <i class="fa fa-phone" aria-hidden="true"  ></i>
-	      <h1>SUPPORT 24/7</h1>
-	      <p>24/7 online suport is available for customer queries</p>
-	    </div>
-	    <div class="overlay"></div>
-	  </div>
-	</div>
-
-
-
-
-	<div class="testimonials">
-      <div class="inner">
-        <h1>Testimonials</h1>
-        <div class="border"></div>
-
-        <div class="row">
-          <div class="col">
-            <div class="testimonial">
-              <img src="p1.png" alt="">
-              <div class="name">Nouman Khan</div>
-              <div class="stars">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-              </p>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="testimonial">
-              <img src="p1.png" alt="">
-              <div class="name">Fahad Zaman</div>
-              <div class="stars">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-              </p>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="testimonial">
-              <img src="p1.png" alt="">
-              <div class="name">Obaid Khan</div>
-              <div class="stars">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <section class="widget widget_blog_subscription">
-	  <form action="./controllers/IndexController.php" method="post" accept-charset="utf-8" id="subscribe-blog">
-	    <p>Subscribe to our newsletter.</p>
-	    <p>
-	      <input type="text" name="email" style="width: 95%; padding: 1px 2px" placeholder="Enter your email address" value="" id="subscribe-field">
-	    </p>
-	    <p>
-	      <input type="submit" value="Subscribe">
-	    </p>
-	  </form>
-	</section>
+	
 
 
 

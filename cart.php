@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title></title>
+	<title>Bakarwaal</title>
 <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -14,7 +14,7 @@
 
 
 
-<style type="text/css">
+<style >
 .cart-main{
 	width:900px; 
 	margin: 0 auto;
@@ -225,9 +225,9 @@ if(!empty($_SESSION["shopping_cart"])) {
 	        <ul >
 	          <li ><a href="index.php">Home</a></li>
 	          <li ><a href="aboutus.php">About Us</a></li>
-	          <li><a href="#services">Products</a></li>
+	          <li><a href="products.php">Products</a></li>
 	          <li><a href="#portfolio">Portfolio</a></li>
-	          <li><a href="#" class="active">Cart '. $cart_count.'</a></li>
+	          <li><a href="#" class="active">Cart <a id="cart_count"> '. $cart_count .'</a></a></li>
 	          
 	          <li><a href="contact.php" >Contact Us</a></li>
 	        </ul>
@@ -254,7 +254,7 @@ if(!empty($_SESSION["shopping_cart"])) {
 
 <div class="cart_div">
 <a href="cart.php">
-<img src="cart-icon.png" /> Cart
+<img src="cart-icon.png" alt="Cart" /> Cart
 <span><?php echo $cart_count; ?></span></a>
 </div>
 
@@ -280,17 +280,17 @@ foreach ($_SESSION["shopping_cart"] as $product){
 ?>
 
 <tr>
-<td data-label="IMAGE"><img  src='<?php echo $product["image"]; ?>' width="50" height="50"  ></td>
+<td data-label="IMAGE"><img alt="Product"  src='<?php echo $product["image"]; ?>' width="50" height="50"  ></td>
 <td data-label="NAME"><?php echo $product["name"]; ?><br/>
 <form method='post' action=''>
-<input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
+<input type='hidden' name='code' value='<?php echo $product["code"]; ?>' />
 <input type='hidden' name='action' value="remove" />
 <button type='submit' class='remove'>Remove Item</button>
 </form>
 </td>
 <td data-label="QUANTITY">
 <form method='post' action=''>
-<input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
+<input type='hidden' name='code' value='<?php echo $product["code"]; ?>' />
 <input type='hidden' name='action' value="change" />
 <select name='quantity' class='quantity' onchange="this.form.submit()">
 <option <?php if($product["quantity"]==1) echo "selected";?> value="1">1</option>
@@ -398,12 +398,19 @@ $total_price += ($product["price"]*$product["quantity"]);
 	<div class=" footer-bottom container">
 		<div class="copyright">
 			
-			© Copyright <strong>BakarWaal</strong> . All Rights Reserved
+			© Copyright <strong>Bakarwaal</strong> . All Rights Reserved
 
 		</div>
 		
 		<div class="credits">
 			Design By Azhar&Afaq
+			<p style="margin:0; margin-top: 10px;">
+				<a href="#">
+				    <img style="border:0;width:88px;height:31px;"
+				        src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+				        alt="Valid CSS!" />
+				    </a>
+				</p>
 		</div>
 
 	</div>
@@ -419,7 +426,7 @@ $total_price += ($product["price"]*$product["quantity"]);
 
 
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script type="text/javascript">
+	<script>
 
 		$(document).ready(function(){
 			$('.menu-toggle').click(function(){

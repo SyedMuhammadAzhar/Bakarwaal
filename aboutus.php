@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title></title>
+	<title>Bakarwaal</title>
 <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
   <link rel="stylesheet" href="./css/footer.css">
 
-<style type="text/css">
+<style >
 .team-section{
   text-align: center;
   overflow: hidden;
@@ -81,6 +81,46 @@
 </style>
 </head>
 <body>
+<?php 
+	require './util/Database.php';
+	class User{
+		public static function name($id) {
+
+			$pdo = Database::makeConnection();
+			$stmt = $pdo->prepare('SELECT name FROM team WHERE id= :id');
+			$stmt->execute(array(
+			':id' => $id
+			));
+			$name = $stmt->fetchColumn();
+			return $name;
+		}
+		public static function des($id) {
+
+			$pdo = Database::makeConnection();
+			$stmt = $pdo->prepare('SELECT des FROM team WHERE id= :id');
+			$stmt->execute(array(
+			':id' => $id
+			));
+			$name = $stmt->fetchColumn();
+			return $name;
+		}
+		public static function image($id) {
+
+			$pdo = Database::makeConnection();
+			$stmt = $pdo->prepare('SELECT image FROM team WHERE id= :id');
+			$stmt->execute(array(
+			':id' => $id
+			));
+			$name = $stmt->fetchColumn();
+			return $name;
+		}
+	}
+session_start();
+$cart_count=0;
+if(!empty($_SESSION["shopping_cart"])) {
+
+	$cart_count = count(array_keys($_SESSION["shopping_cart"]));}
+?>					     				              		
 
 	
 	<!--  Header  -->
@@ -94,9 +134,9 @@
 	        <ul >
 	          <li ><a href="index.php" >Home</a></li>
 	          <li ><a href="#" class="active">About Us</a></li>
-	          <li><a href="#services">Products</a></li>
+	          <li><a href="products.php">Products</a></li>
 	          <li><a href="#portfolio">Portfolio</a></li>
-	          <li><a href="cart.php">Cart</a></li>
+	          <li><a href="cart.php">Cart <a id="cart_count"> <?php echo $cart_count; ?></a></a></li>
 	          <li><a href="contact.php">Contact Us</a></li>
 	        </ul>
       	</nav>
@@ -137,9 +177,9 @@
 		      <div class="pers">
 
 		        <div class="pe">
-		          <img src="img/p1.png" alt="">
-		          <div class="p-name">Afaq Mansoor Khan</div>
-		          <div class="p-des">Web Developer</div>
+		          <img src="<?php echo $product = User::image('1')?>" alt="">
+		          <div class="p-name"><?php echo $product = User::name('1')?></div>
+		          <div class="p-des"><?php echo $product = User::des('1')?></div>
 		          <div class="p-sm">
 		            <a href="#"><i class="fa fa-facebook-f"></i></a>
 		            <a href="#"><i class="fa fa-twitter"></i></a>
@@ -148,9 +188,9 @@
 		        </div>
 
 		        <div class="pe">
-		          <img src="img/p2.png" alt="">
-		          <div class="p-name">Syed Muhammad Azhar</div>
-		          <div class="p-des">Web Developer</div>
+		          <img src="<?php echo $product = User::image('2')?>" alt="">
+		          <div class="p-name"><?php echo $product = User::name('2')?></div>
+		          <div class="p-des"><?php echo $product = User::des('2')?></div>
 		          <div class="p-sm">
 		            <a href="#"><i class="fa fa-facebook-f"></i></a>
 		            <a href="#"><i class="fa fa-twitter"></i></a>
@@ -159,9 +199,9 @@
 		        </div>
 
 		        <div class="pe">
-		          <img src="img/p3.png" alt="">
-		          <div class="p-name">John Doe</div>
-		          <div class="p-des">Web Designer</div>
+		          <img src="<?php echo $product = User::image('3')?>" alt="">
+		          <div class="p-name"><?php echo $product = User::name('3')?></div>
+		          <div class="p-des"><?php echo $product = User::des('3')?></div>
 		          <div class="p-sm">
 		            <a href="#"><i class="fa fa-facebook-f"></i></a>
 		            <a href="#"><i class="fa fa-twitter"></i></a>
@@ -247,12 +287,19 @@
 	<div class=" footer-bottom container">
 		<div class="copyright">
 			
-			© Copyright <strong>BakarWaal</strong> . All Rights Reserved
+			© Copyright <strong>Bakarwaal</strong> . All Rights Reserved
 
 		</div>
 		
 		<div class="credits">
 			Design By Azhar&Afaq
+			<p style="margin:0; margin-top: 10px;">
+				<a href="#">
+				    <img style="border:0;width:88px;height:31px;"
+				        src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+				        alt="Valid CSS!" />
+				    </a>
+				</p>
 		</div>
 
 	</div>
@@ -268,7 +315,7 @@
 
 
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script type="text/javascript">
+	<script>
 		$(document).ready(function(){
 			$('.menu-toggle').click(function(){
 				$('nav').toggleClass('active');
