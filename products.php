@@ -147,7 +147,7 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 	          <li ><a href="index.php">Home</a></li>
 	          <li ><a href="aboutus.php">About Us</a></li>
 	          <li><a href="products.php" class="active">Products</a></li>
-	          <li><a href="#portfolio">Portfolio</a></li>
+	         
 	          <li><a href="cart.php">Cart <a id="cart_count"> <?php echo $cart_count; ?></a></a></li>
 	          <li><a href="contact.php">Contact Us</a></li>
 	        </ul>
@@ -832,7 +832,7 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 				<div class="footer-newsletter ">
 					<h4>Our Newsletter</h4>
 						<p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
-						<form action="./controllers/IndexController.php" method="post">
+						<form action="./controllers/ProductController.php" method="post">
 						  <input type="email" name="email">
 						  <input type="submit" value="Subscribe">
 						</form>

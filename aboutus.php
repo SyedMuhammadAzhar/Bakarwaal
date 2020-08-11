@@ -135,7 +135,7 @@ if(!empty($_SESSION["shopping_cart"])) {
 	          <li ><a href="index.php" >Home</a></li>
 	          <li ><a href="#" class="active">About Us</a></li>
 	          <li><a href="products.php">Products</a></li>
-	          <li><a href="#portfolio">Portfolio</a></li>
+	        
 	          <li><a href="cart.php">Cart <a id="cart_count"> <?php echo $cart_count; ?></a></a></li>
 	          <li><a href="contact.php">Contact Us</a></li>
 	        </ul>

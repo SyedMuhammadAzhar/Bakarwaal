@@ -13,7 +13,16 @@
   <link rel="stylesheet" href="./css/footer.css">
 
 <style >
+@media screen and (max-width:800px){
+    
+.contact-in
+{
 
+  display:block;
+  
+  /*flex-wrap: wrap;*/
+
+}
 	</style>
 </head>
 <body>
@@ -38,7 +47,7 @@
 	          <li ><a href="index.php">Home</a></li>
 	          <li ><a href="aboutus.php">About Us</a></li>
 	          <li><a href="products.php">Products</a></li>
-	          <li><a href="#portfolio">Portfolio</a></li>
+	       
 	          <li><a href="cart.php">Cart <a id="cart_count"> <?php echo $cart_count; ?></a></a></li>
 	          
 	          <li><a href="#" class="active">Contact Us</a></li>
@@ -63,11 +72,11 @@
 		</div>
 		<div class="contact-form">
  			<h1>Contact Us</h1>
-				<form>
-					<input type="text" placeholder="Name" class="contact-form-txt" />
-					<input type="text" placeholder="Email" class="contact-form-txt" />
-					<textarea placeholder="Message" class="contact-form-textarea"></textarea>
-					<input type="button" name="Send" value="Send" class="contact-form-btn" />
+				<form action="./controllers/ContactController2.php" method="post">
+					<input type="text" name="name" placeholder="Name" class="contact-form-txt" />
+					<input type="text" name="email" placeholder="Email" class="contact-form-txt" />
+					<textarea name="message" placeholder="Message" class="contact-form-textarea"></textarea>
+					<input type="submit" name="send" value="Send" class="contact-form-btn" />
 				</form>
 		</div>
 	</div>

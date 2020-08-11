@@ -226,7 +226,7 @@ if(!empty($_SESSION["shopping_cart"])) {
 	          <li ><a href="index.php">Home</a></li>
 	          <li ><a href="aboutus.php">About Us</a></li>
 	          <li><a href="products.php">Products</a></li>
-	          <li><a href="#portfolio">Portfolio</a></li>
+	         
 	          <li><a href="#" class="active">Cart <a id="cart_count"> '. $cart_count .'</a></a></li>
 	          
 	          <li><a href="contact.php" >Contact Us</a></li>
@@ -380,7 +380,7 @@ $total_price += ($product["price"]*$product["quantity"]);
 				<div class="footer-newsletter ">
 					<h4>Our Newsletter</h4>
 						<p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
-						<form action="./controllers/ContactController.php" method="post">
+						<form action="./controllers/CartController.php" method="post">
 						  <input type="email" name="email">
 						  <input type="submit" value="Subscribe">
 						</form>

@@ -18,7 +18,19 @@ class User{
 		        ));
 	}
 
+	public static function insertUser2($name,$email,$message){
+
+		$pdo = Database::makeConnection();
+
+		$stmt = $pdo->prepare('INSERT INTO message (name,email,message) VALUES (:name,:email,:message)');
+
+		return $stmt->execute(array(
+					':name' => $name,
+					':email' => $email,
+					':message' => $message
+		        ));
+	}
+
 
 }
-// include '../index.php';
 ?>
