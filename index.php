@@ -117,6 +117,21 @@ if(empty($_SESSION["shopping_cart"])) {
 
 	}
 }
+
+
+if (isset($_POST['product'])){
+	$code2 = $_POST['product'];
+	$result2 = mysqli_query($con,"SELECT * FROM `products` WHERE `code`='$code2'");
+	$row2 = mysqli_fetch_assoc($result2);
+	$_SESSION["code2"] = $row2['code'];
+
+	header("location:./product.php");
+
+
+}
+
+
+
 $cart_count=0;
 if(!empty($_SESSION["shopping_cart"])) {
 
@@ -183,7 +198,7 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					      <div class="el-wrapper">
 					        <div class="box-up">
 
-					          <form method='post' action='./product.php'>
+					          <form method='post' action='./index.php'>
 					          	<input type="image" class="img" src="<?php echo $product = User::image('1')?>" alt=""/>
 					            <input  type='hidden' name='product' value="pr01" />
 					          </form>
@@ -222,7 +237,12 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					    <div class="row">
 					      <div class="el-wrapper">
 					        <div class="box-up">
-					          <img class="img" src="t-shirt.png" alt="">
+
+					          <form method='post' action='./index.php'>
+					          	<input type="image" class="img" src="<?php echo $product = User::image('2')?>" alt=""/>
+					            <input  type='hidden' name='product' value="pr02" />
+					          </form>
+
 					          <div class="img-info">
 					            <div class="info-inner">
 					              <span class="p-name"><?php echo $product = User::namevalue('2')?></span>
@@ -258,7 +278,10 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					    <div class="row">
 					      <div class="el-wrapper">
 					        <div class="box-up">
-					          <img class="img" src="t-shirt.png" alt="">
+					          <form method='post' action='./index.php'>
+					          	<input type="image" class="img" src="<?php echo $product = User::image('3')?>" alt=""/>
+					            <input  type='hidden' name='product' value="pr03" />
+					          </form>
 					          <div class="img-info">
 					            <div class="info-inner">
 					              <span class="p-name"><?php echo $product = User::namevalue('3')?></span>
@@ -289,17 +312,16 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					</div>
 
   				
-<!-- 
-	</div>
 
-	<div class="div-card">
- -->
   					<div class="container page-wrapper" >
 					  <div class="page-inner">
 					    <div class="row">
 					      <div class="el-wrapper">
 					        <div class="box-up">
-					          <img class="img" src="t-shirt.png" alt="">
+					          <form method='post' action='./index.php'>
+					          	<input type="image" class="img" src="<?php echo $product = User::image('4')?>" alt=""/>
+					            <input  type='hidden' name='product' value="pr04" />
+					          </form>
 					          <div class="img-info">
 					            <div class="info-inner">
 					              <span class="p-name"><?php echo $product = User::namevalue('4')?></span>
@@ -334,7 +356,10 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					    <div class="row">
 					      <div class="el-wrapper">
 					        <div class="box-up">
-					          <img class="img" src="t-shirt.png" alt="">
+					          <form method='post' action='./index.php'>
+					          	<input type="image" class="img" src="<?php echo $product = User::image('5')?>" alt=""/>
+					            <input  type='hidden' name='product' value="pr05" />
+					          </form>
 					          <div class="img-info">
 					            <div class="info-inner">
 					              <span class="p-name"><?php echo $product = User::namevalue('5')?></span>
@@ -370,7 +395,10 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					    <div class="row">
 					      <div class="el-wrapper">
 					        <div class="box-up">
-					          <img class="img" src="t-shirt.png" alt="">
+					          <form method='post' action='./index.php'>
+					          	<input type="image" class="img" src="<?php echo $product = User::image('6')?>" alt=""/>
+					            <input  type='hidden' name='product' value="pr06" />
+					          </form>
 					          <div class="img-info">
 					            <div class="info-inner">
 					              <span class="p-name"><?php echo $product = User::namevalue('6')?></span>
@@ -407,7 +435,7 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 	</div>
 
 	<div class="div-btn">
-		<a href="#0" class="cd-btn2 main-action">Browse All Products 
+		<a href="./products.php" class="cd-btn2 main-action">Browse All Products 
 			<i class="fa fa-arrow-circle-right" aria-hidden="true" style="font-size: 20px"></i>
 		</a>
 	</div>
