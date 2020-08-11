@@ -789,18 +789,16 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 		<div class="container">
 
 			<div class="row">
-				<div class="footer-info ">
+				<div class="footer-info " style="margin-right: 30px;">
 					<h3>BakarWaal</h3>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis consequuntur voluptate, assumenda officiis
-						 possimus vitae ad hic veritatis impedit illum? Error, ullam quo minus soluta dignissimos excepturi maxime
-						  perspiciatis molestias?</p>
+					<p>Bakarwaal is a Peshawar based startup focused on representing handmade woolen products as a brand and providing an online platform to the artisans who are knitting these products. This project was carried out by the co-founders of the startup.</p>
 				</div>
 				<div class="footer-links ">
 					<h4>Useful Links</h4>
 						<ul>
-						  <li><a href="#">Home</a></li>
-						  <li><a href="#">About us</a></li>
-						  <li><a href="#">Services</a></li>
+						  <li><a href="./index.php">Home</a></li>
+						  <li><a href="./aboutus.php">About us</a></li>
+						  <li><a href="./products.php">Products</a></li>
 						  <li><a href="#">Terms of service</a></li>
 						  <li><a href="#">Privacy policy</a></li>
 						</ul>
@@ -810,20 +808,19 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 				<div class="footer-contact ">
 					
 					<h4>Contact Us</h4>
-						<p>
-						  A108 Adam Street <br>
-						  New York, NY 535022<br>
-						  United States <br>
-						  <strong>Phone:</strong> +1 5589 55488 55<br>
-						  <strong>Email:</strong> info@example.com<br>
+						<p>1-A, Sector E-5, Phase VII<br>
+						  Hayatabad, Peshawar 25000<br>
+						  Pakistan<br>
+						  <strong>Phone:</strong> +92 314 6930864<br>
+						  <strong>Email:</strong> bakarwaal1@gmail.com<br>
 						</p>
 			
 						<div class="social-links">
 						  <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-						  <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-						  <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+						  <a target="_blank" href="https://www.facebook.com/bakarwaal/" class="facebook"><i class="fa fa-facebook"></i></a>
+						  <a target="_blank" href="https://www.instagram.com/bak_arwaal/" class="instagram"><i class="fa fa-instagram"></i></a>
 						  <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-						  <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+						  <a target="_blank" href="https://www.linkedin.com/company/bakarwaal/" class="linkedin"><i class="fa fa-linkedin"></i></a>
 						</div>
 
 				</div>
@@ -855,7 +852,7 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 		</div>
 		
 		<div class="credits">
-			Design By Azhar&Afaq
+			Design By Azhar & Afaq
 			<p style="margin:0; margin-top: 10px;">
 				<a href="#">
 				    <img style="border:0;width:88px;height:31px;"
