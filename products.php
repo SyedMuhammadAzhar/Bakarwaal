@@ -8,7 +8,6 @@
 	<!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
-  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"> -->
   <link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
   <link rel="stylesheet" href="./css/footer.css">
 
@@ -57,6 +56,16 @@
 			$name = $stmt->fetchColumn();
 			return $name;
 		}
+		public static function image($id) {
+
+			$pdo = Database::makeConnection();
+			$stmt = $pdo->prepare('SELECT image FROM products WHERE id= :id');
+			$stmt->execute(array(
+			':id' => $id
+			));
+			$name = $stmt->fetchColumn();
+			return $name;
+		}
 	}
 					     				              		
 	
@@ -65,6 +74,7 @@
 session_start();
 include('./util/db.php');
 $status="";
+
 if (isset($_POST['code']) && $_POST['code']!=""){
 $code = $_POST['code'];
 $result = mysqli_query($con,"SELECT * FROM `products` WHERE `code`='$code'");
@@ -100,6 +110,26 @@ if(empty($_SESSION["shopping_cart"])) {
 
 	}
 }
+
+
+
+
+
+
+if (isset($_POST['product'])){
+	$code2 = $_POST['product'];
+	$result2 = mysqli_query($con,"SELECT * FROM `products` WHERE `code`='$code2'");
+	$row2 = mysqli_fetch_assoc($result2);
+	$_SESSION["code2"] = $row2['code'];
+
+	header("location:./product.php");
+
+
+}
+
+
+
+
 $cart_count=0;
 if(!empty($_SESSION["shopping_cart"])) {
 
@@ -114,7 +144,7 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 
 	    <nav class="active">  
 	        <ul >
-	          <li ><a href="index.php"  >Home</a></li>
+	          <li ><a href="index.php">Home</a></li>
 	          <li ><a href="aboutus.php">About Us</a></li>
 	          <li><a href="products.php" class="active">Products</a></li>
 	          <li><a href="#portfolio">Portfolio</a></li>
@@ -143,12 +173,18 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					      <div class="el-wrapper">
 					        <div class="box-up">
 
-					          <a href="./product.php"><img class="img" src="t-shirt.png" alt=""></a>
-					          
+
+					        <form method='post' action='./products.php'>
+					          	<input type="image" class="img" src="<?php echo $product = User::image('1')?>" alt=""/>
+					            <input  type='hidden' name='product' value="pr01" />
+					        </form>
+
 					          <div class="img-info">
 					            <div class="info-inner">
 
-					              <a href="./product.php"> <span class="p-name"><?php echo $product = User::namevalue('1')?></span></a>
+					              	<span class="p-name" ><?php echo $product = User::namevalue('1')?>
+					              	</span>
+
 
 					              <span class="p-company"><?php echo $product = User::companyvalue('1')?></span>
 					            </div>
@@ -164,10 +200,12 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					          <a class="cart" href="#">
 					            <span class="price">$<?php echo $product = User::pricevalue('1')?></span>
 					            <span class="add-to-cart">
+
 					            	<form method='post' action=''>
 					            		<input type='hidden' name='code' value="Pr01" />
 					              		<span class="txt"><input class="txt txt2" type="submit" name="" value="Add in cart"></span>
 					               </form>
+
 					            </span>
 					          </a>
 					        </div>
@@ -181,7 +219,12 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					    <div class="row">
 					      <div class="el-wrapper">
 					        <div class="box-up">
-					          <img class="img" src="t-shirt.png" alt="">
+
+					          <form method='post' action='./products.php'>
+					          	<input type="image" class="img" src="t-shirt.png" alt=""/>
+					            <input  type='hidden' name='product' value="pr02" />
+					          </form>
+
 					          <div class="img-info">
 					            <div class="info-inner">
 					              <span class="p-name"><?php echo $product = User::namevalue('2')?></span>
@@ -217,7 +260,12 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					    <div class="row">
 					      <div class="el-wrapper">
 					        <div class="box-up">
-					          <img class="img" src="t-shirt.png" alt="">
+
+					          <form method='post' action='./products.php'>
+					          	<input type="image" class="img" src="t-shirt.png" alt=""/>
+					            <input  type='hidden' name='product' value="pr03" />
+					          </form>
+
 					          <div class="img-info">
 					            <div class="info-inner">
 					              <span class="p-name"><?php echo $product = User::namevalue('3')?></span>
@@ -258,7 +306,12 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					    <div class="row">
 					      <div class="el-wrapper">
 					        <div class="box-up">
-					          <img class="img" src="t-shirt.png" alt="">
+
+					            <form method='post' action='./products.php'>
+						          	<input type="image" class="img" src="t-shirt.png" alt=""/>
+						            <input  type='hidden' name='product' value="pr04" />
+					          	</form>
+
 					          <div class="img-info">
 					            <div class="info-inner">
 					              <span class="p-name"><?php echo $product = User::namevalue('4')?></span>
@@ -293,7 +346,12 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					    <div class="row">
 					      <div class="el-wrapper">
 					        <div class="box-up">
-					          <img class="img" src="t-shirt.png" alt="">
+
+					          <form method='post' action='./products.php'>
+					          	<input type="image" class="img" src="t-shirt.png" alt=""/>
+					            <input  type='hidden' name='product' value="pr05" />
+					          </form>
+
 					          <div class="img-info">
 					            <div class="info-inner">
 					              <span class="p-name"><?php echo $product = User::namevalue('5')?></span>
@@ -329,7 +387,12 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					    <div class="row">
 					      <div class="el-wrapper">
 					        <div class="box-up">
-					          <img class="img" src="t-shirt.png" alt="">
+
+					          <form method='post' action='./products.php'>
+					          	<input type="image" class="img" src="t-shirt.png" alt=""/>
+					            <input  type='hidden' name='product' value="pr06" />
+					          </form>
+
 					          <div class="img-info">
 					            <div class="info-inner">
 					              <span class="p-name"><?php echo $product = User::namevalue('6')?></span>
@@ -369,7 +432,12 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					    <div class="row">
 					      <div class="el-wrapper">
 					        <div class="box-up">
-					          <img class="img" src="t-shirt.png" alt="">
+
+					          <form method='post' action='./products.php'>
+					          	<input type="image" class="img" src="t-shirt.png" alt=""/>
+					            <input  type='hidden' name='product' value="pr07" />
+					          </form>
+
 					          <div class="img-info">
 					            <div class="info-inner">
 					              <span class="p-name"><?php echo $product = User::namevalue('7')?></span>
@@ -404,7 +472,12 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					    <div class="row">
 					      <div class="el-wrapper">
 					        <div class="box-up">
-					          <img class="img" src="t-shirt.png" alt="">
+
+					          <form method='post' action='./products.php'>
+					          	<input type="image" class="img" src="t-shirt.png" alt=""/>
+					            <input  type='hidden' name='product' value="pr08" />
+					          </form>
+
 					          <div class="img-info">
 					            <div class="info-inner">
 					              <span class="p-name"><?php echo $product = User::namevalue('8')?></span>
@@ -440,11 +513,16 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					    <div class="row">
 					      <div class="el-wrapper">
 					        <div class="box-up">
-					          <img class="img" src="t-shirt.png" alt="">
+
+					          <form method='post' action='./products.php'>
+					          	<input type="image" class="img" src="t-shirt.png" alt=""/>
+					            <input  type='hidden' name='product' value="pr09" />
+					          </form>
+
 					          <div class="img-info">
 					            <div class="info-inner">
-					              <span class="p-name"><?php echo $product = User::namevalue('6')?></span>
-					              <span class="p-company"><?php echo $product = User::companyvalue('6')?></span>
+					              <span class="p-name"><?php echo $product = User::namevalue('9')?></span>
+					              <span class="p-company"><?php echo $product = User::companyvalue('9')?></span>
 					            </div>
 					            <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
 					          </div>
@@ -456,7 +534,7 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					          </div>
 
 					          <a class="cart" href="#">
-					            <span class="price" >$<?php echo $product = User::pricevalue('6')?></span>
+					            <span class="price" >$<?php echo $product = User::pricevalue('9')?></span>
 					            <span class="add-to-cart">
 					              <form method='post' action=''>
 					            		<input type='hidden' name='code' value="Pr06" />
@@ -804,7 +882,12 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 		$(document).ready(function(){
 			$('.menu-toggle').click(function(){
 				$('nav').toggleClass('active');
-			})
+			});
+			$(".pname").click(function(){
+
+    			
+				document.getElementById("myForm").submit(); 
+			});
 		})
 	</script>
   

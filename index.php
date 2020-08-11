@@ -64,6 +64,16 @@
 			$name = $stmt->fetchColumn();
 			return $name;
 		}
+		public static function image($id) {
+
+			$pdo = Database::makeConnection();
+			$stmt = $pdo->prepare('SELECT image FROM products WHERE id= :id');
+			$stmt->execute(array(
+			':id' => $id
+			));
+			$name = $stmt->fetchColumn();
+			return $name;
+		}
 	}
 					     				              		
 	
@@ -172,7 +182,12 @@ $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 					    <div class="row">
 					      <div class="el-wrapper">
 					        <div class="box-up">
-					          <img class="img" src="t-shirt.png" alt="">
+
+					          <form method='post' action='./product.php'>
+					          	<input type="image" class="img" src="<?php echo $product = User::image('1')?>" alt=""/>
+					            <input  type='hidden' name='product' value="pr01" />
+					          </form>
+
 					          <div class="img-info">
 					            <div class="info-inner">
 					              <span class="p-name"><?php echo $product = User::namevalue('1')?></span>

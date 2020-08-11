@@ -1,11 +1,83 @@
 <?php 
+include('./util/db.php');
+session_start();
 
-		session_start();
-		$cart_count=0;
-		if(!empty($_SESSION["shopping_cart"])) {
-		$cart_count = count(array_keys($_SESSION["shopping_cart"]));}
+
+if (isset($_POST['code']) && $_POST['code']!=""){
+$code2 = $_POST['code'];
+$result2 = mysqli_query($con,"SELECT * FROM `products` WHERE `code`='$code2'");
+$row2 = mysqli_fetch_assoc($result2);
+
+
+$name2 = $row2['name'];
+$code3=$row2['code'];
+$price2=$row2['price'];
+$image4 = $row2['image'];
+$company2=$row2['company'];
+
+$cartArray = array(
+	$code2=>array(
+	'name'=>$name2,
+	'code'=>$code3,
+	'price'=>$price2,
+	'quantity'=>1,
+	'image'=>$image4,
+	'company'=>$company2)
+);
+
+if(empty($_SESSION["shopping_cart"])) {
+	$_SESSION["shopping_cart"] = $cartArray;
+	
+}else{
+	$array_keys = array_keys($_SESSION["shopping_cart"]);
+	if(in_array($code,$array_keys)) {
+
+	} 
+	else {
+		$_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"],$cartArray);
+	
+	}
+
+}
+}
+
+
+
+$code=$_SESSION["code2"];
+
+$result = mysqli_query($con,"SELECT * FROM `products` WHERE `code`='$code'");
+$row = mysqli_fetch_assoc($result);
+
+
+$name = $row['name'];
+// $code=$row['code'];
+$price=$row['price'];
+$image=$row['largeimage'];
+$image2=$row['largeimage2'];
+$image3=$row['largeimage3'];
+$company=$row['company'];
+
+$cartArray2 = array(
+	$code=>array(
+	'name'=>$name,
+	'code'=>$code,
+	'price'=>$price,
+	'quantity'=>1,
+	'image'=>$image,
+	'company'=>$company)
+);
+if(empty($_SESSION["product"])) {
+	$_SESSION["product"] = $cartArray2;
+	
+}
+
+
+$cart_count=0;
+if(!empty($_SESSION["shopping_cart"])) {
+	$cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 		
-	?>
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +111,7 @@
   margin-top: 60px;
 }
 .left-column img {
-  width: 100%;
+  width: 60%;
   position: absolute;
   left: 0;
   top: 0;
@@ -83,11 +155,11 @@
   display: inline-block;
 }
  
-.color-choose input[type=&amp;quot;radio&amp;quot;] {
+.color-choose input[type=radio] {
   display: none;
 }
  
-.color-choose input[type=&amp;quot;radio&amp;quot;] + label span {
+.color-choose input[type=radio] + label span {
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -97,22 +169,22 @@
   border-radius: 50%;
 }
  
-.color-choose input[type=&amp;quot;radio&amp;quot;] + label span {
+.color-choose input[type=radio] + label span {
   border: 2px solid #FFFFFF;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.33);
 }
  
-.color-choose input[type=&amp;quot;radio&amp;quot;]#red + label span {
+.color-choose input[type=radio]#red + label span {
   background-color: #C91524;
 }
-.color-choose input[type=&amp;quot;radio&amp;quot;]#blue + label span {
+.color-choose input[type=radio]#blue + label span {
   background-color: #314780;
 }
-.color-choose input[type=&amp;quot;radio&amp;quot;]#black + label span {
-  background-color: #323232;
+.color-choose input[type=radio]#black + label span {
+  background-color: gray;
 }
  
-.color-choose input[type=&amp;quot;radio&amp;quot;]:checked + label span {
+.color-choose input[type=radio]:checked + label span {
   background-image: url(images/check-icn.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -143,6 +215,7 @@
 .cable-config {
   border-bottom: 1px solid #E1E8EE;
   margin-bottom: 20px;
+
 }
  
 .cable-config a {
@@ -152,9 +225,10 @@
   position: relative;
   margin: 10px 0;
   display: inline-block;
+
 }
 .cable-config a:before {
-  content: &amp;quot;?&amp;quot;;
+  content: "?";
   height: 15px;
   width: 15px;
   border-radius: 50%;
@@ -197,7 +271,7 @@
 @media (max-width: 940px) {
   .container {
     flex-direction: column;
-    margin-top: 60px;
+    margin-top: 100px;
   }
  
   .left-column,
@@ -210,14 +284,34 @@
     right: 0;
     top: -65px;
     left: initial;
+    z-index: -1;
   }
+  .product-description{
+		max-width: 500px;
+	}
 }
+
+@media (max-width: 768px) {
+	.product-description{
+		max-width: 380px;
+	}
+}
+@media (max-width: 692px) {
  
+  .product-description{
+		max-width: 320px;
+		margin-top: 80px;
+	}
+}
 @media (max-width: 535px) {
   .left-column img {
     width: 220px;
-    top: -85px;
+    top: -65px;
   }
+  .product-description{
+		/*max-width: 380px;*/
+		margin-top: 100px;
+	}
 }
 
 
@@ -257,9 +351,9 @@
  
   <!-- Left Column / Headphones Image -->
   <div class="left-column">
-    <img data-image="black" src="images/black.png" alt="">
-    <img data-image="blue" src="images/blue.png" alt="">
-    <img data-image="red" class="active" src="images/red.png" alt="">
+    <img data-image="black" src="<?php echo $image3;?>" alt="">
+    <img data-image="blue" src="<?php echo $image2;?>" alt="">
+    <img data-image="red" class="active" src="<?php echo $image;?>" alt="">
   </div>
  
  
@@ -268,9 +362,9 @@
  
     <!-- Product Description -->
     <div class="product-description">
-      <span>Headphones</span>
-      <h1>Beats EP</h1>
-      <p>The preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and high isolation. Sturdy headband and on-ear cushions suitable for live performance</p>
+      <span><?php echo $company;?></span><br><br>
+      <h1><?php echo $name;?></h1>
+      <p>An active essential with casual flair, this track jacket from ID Ideology updates a classic silhouette with contemporary colorblocking. </p>
     </div>
  
     <!-- Product Configuration -->
@@ -298,23 +392,28 @@
       </div>
  
       <!-- Cable Configuration -->
-      <div class="cable-config">
-        <span>Cable configuration</span>
- 
-        <div class="cable-choose">
-          <button>Straight</button>
-          <button>Coiled</button>
-          <button>Long-coiled</button>
+      <div class="cable-config" >
+        <span >Size</span>
+ 		<br><br>
+        <div class="cable-choose" style="">
+          <button>Small</button>
+          <button>Medium</button>
+          <button>Large</button>
         </div>
  
-        <a href="#">How to configurate your headphones</a>
+        <a href="#">How to unbox your product</a>
       </div>
     </div>
  
     <!-- Product Pricing -->
     <div class="product-price">
-      <span>148$</span>
-      <a href="#" class="cart-btn">Add to cart</a>
+      <span>$<?php echo $price;?></span><form method='post' action='./product.php'>
+      <!-- <a href="#" class="cart-btn"> --> 
+      	
+			<input type='hidden' name='code' value="<?php echo $code;?>" />
+			<input class="cart-btn" type="submit" name="" value="Add in cart">
+		
+	  <!-- </a> --></form>
     </div>
   </div>
 </main>
@@ -333,7 +432,7 @@
 
 	<div class="footer-top">
 
-		<div class="container">
+		<div class="" style=" margin: 0px 80px;">
 
 			<div class="row">
 				<div class="footer-info ">
@@ -394,7 +493,7 @@
 
 	</div>
 
-	<div class=" footer-bottom container">
+	<div class=" footer-bottom"  style=" margin: 0px 80px;">
 		<div class="copyright">
 			
 			© Copyright <strong>Bakarwaal</strong> . All Rights Reserved
@@ -423,7 +522,7 @@
 
 
 
-
+	
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script >
 		$(document).ready(function(){
