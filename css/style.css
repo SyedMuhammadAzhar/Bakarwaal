@@ -1465,6 +1465,7 @@ body {
 .pe img{
   width: 120px;
   height: 120px;
+  border-radius: 80px;
 }
 .p-name{
   margin: 16px 0;

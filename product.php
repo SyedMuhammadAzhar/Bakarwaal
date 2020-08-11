@@ -435,7 +435,7 @@ if(!empty($_SESSION["shopping_cart"])) {
 		<div class="" style=" margin: 0px 80px;">
 
 			<div class="row">
-				<div class="footer-info " style="margin-right: 30px;">
+				<div class="footer-info " >
 					<h3>BakarWaal</h3>
 					<p>Bakarwaal is a Peshawar based startup focused on representing handmade woolen products as a brand and providing an online platform to the artisans who are knitting these products. This project was carried out by the co-founders of the startup.</p>
 				</div>
